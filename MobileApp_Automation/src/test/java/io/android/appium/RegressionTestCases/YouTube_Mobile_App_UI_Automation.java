@@ -24,7 +24,7 @@ public class YouTube_Mobile_App_UI_Automation extends Utility{
 		postiveFlow.clickOntheFirstDisplayedResult();
 
 		postiveFlow.clickOntheFirstvideo();
-
+		waitForElement(clickOntheComment);
 		postiveFlow.clickOntheComment();
 		postiveFlow.clickOntheComment();
 
