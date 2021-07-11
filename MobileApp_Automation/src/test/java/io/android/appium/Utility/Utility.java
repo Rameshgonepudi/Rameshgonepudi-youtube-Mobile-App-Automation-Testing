@@ -6,6 +6,7 @@ import java.net.URL;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -53,6 +54,23 @@ public AndroidDriver<WebElement>  driver;
  
 	}
 
+	public void openYoutubeOnAndroidDeviceEmulator() throws MalformedURLException, InterruptedException
+	{
+		DesiredCapabilities capabilitiess = new DesiredCapabilities();
+		capabilitiess.setCapability("BROWSER_NAME", "Android");
+		capabilitiess.setCapability("VERSION", "4.4.2"); 
+		capabilitiess.setCapability("deviceName","Emulator");
+		capabilitiess.setCapability("platformName","Android");
+	 
+	   
+		capabilitiess.setCapability("appPackage", "com.android.calculator2");
+	// This package name of your app (you can get it from apk info app)
+		capabilitiess.setCapability("appActivity","com.android.calculator2.Calculator"); // This is Launcher activity of your app (you can get it from apk info app)
+	//Create RemoteWebDriver instance and connect to the Appium server
+	 //It will launch the Calculator App in Android Device using the configurations specified in Desired Capabilities
+	   driver = (AndroidDriver<WebElement>) new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilitiess);
+ 
+	}
 	public void waitForElement(String locator)
 	{
 		WebDriverWait wait = new WebDriverWait(driver,30);
